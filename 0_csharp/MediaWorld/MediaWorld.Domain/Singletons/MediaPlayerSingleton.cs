@@ -1,3 +1,6 @@
+using System;
+using MediaWorld.Domain.Models;
+
 namespace MediaWorld.Domain.Singletons
 {
   /// <summary>
@@ -5,13 +8,18 @@ namespace MediaWorld.Domain.Singletons
   /// </summary>
   public class MediaPlayerSingleton
   {
-    private static readonly string _instance = "media player";
+    private static readonly MediaPlayerSingleton _instance = new MediaPlayerSingleton();
 
     private MediaPlayerSingleton() {}
 
-    public static string GetInstance()
+    public static MediaPlayerSingleton GetInstance()
     {
       return _instance;
+    }
+
+    public void Play(Music m)
+    {
+      Console.WriteLine(m);
     }
   }
 }

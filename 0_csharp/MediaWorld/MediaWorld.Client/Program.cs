@@ -1,4 +1,5 @@
 ﻿using System;
+using MediaWorld.Domain.Abstracts;
 using MediaWorld.Domain.Models;
 using MediaWorld.Domain.Singletons;
 
@@ -20,8 +21,8 @@ namespace MediaWorld.Client
     private static void Play()
     {
       var mediaPlayer = MediaPlayerSingleton.GetInstance();
-      Music song = new Song();
-      Music audible = new Audible();
+      AMedia song = new Song();
+      AMedia audible = new Movie();
 
       mediaPlayer.Play(song); 
       mediaPlayer.Play(audible);

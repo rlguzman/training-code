@@ -1,12 +1,13 @@
 using System;
-using MediaWorld.Domain.Models;
+using MediaWorld.Domain.Abstracts;
+using MediaWorld.Domain.Interfaces;
 
 namespace MediaWorld.Domain.Singletons
 {
   /// <summary>
   /// contains the singleton pattern
   /// </summary>
-  public class MediaPlayerSingleton
+  public class MediaPlayerSingleton : IPlayer
   {
     private static readonly MediaPlayerSingleton _instance = new MediaPlayerSingleton();
 
@@ -17,7 +18,7 @@ namespace MediaWorld.Domain.Singletons
       return _instance;
     }
 
-    public void Play(Music m)
+    public void Play(AMedia m)
     {
       Console.WriteLine(m);
     }

@@ -11,16 +11,19 @@ namespace MediaWorld.Domain.Singletons
   {
     private static readonly MediaPlayerSingleton _instance = new MediaPlayerSingleton();
 
-    private MediaPlayerSingleton() {}
-
-    public static MediaPlayerSingleton GetInstance()
+    public static MediaPlayerSingleton Instance
     {
-      return _instance;
+      get
+      {
+        return _instance;
+      }
     }
 
-    public void Play(AMedia m)
+    private MediaPlayerSingleton() {}
+
+    public void Execute(string command, AMedia media)
     {
-      Console.WriteLine(m);
+      Console.WriteLine(media);
     }
   }
 }

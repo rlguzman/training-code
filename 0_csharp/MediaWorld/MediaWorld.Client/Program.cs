@@ -20,12 +20,12 @@ namespace MediaWorld.Client
 
     private static void Play()
     {
-      var mediaPlayer = MediaPlayerSingleton.GetInstance();
+      var mediaPlayer = MediaPlayerSingleton.Instance;
       AMedia song = new Song();
       AMedia audible = new Movie();
 
-      mediaPlayer.Play(song); 
-      mediaPlayer.Play(audible);
+      mediaPlayer.Execute("play", song); 
+      mediaPlayer.Execute("play", audible);
     }
   }
 }

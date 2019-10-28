@@ -22,10 +22,10 @@ namespace MediaWorld.Client
     {
       var mediaPlayer = MediaPlayerSingleton.Instance;
       AMedia song = new Song();
-      AMedia audible = new Movie();
+      AMedia movie = new Movie();
 
       mediaPlayer.Execute("play", song); 
-      mediaPlayer.Execute("play", audible);
+      mediaPlayer.Execute("play", movie);
     }
   }
 }

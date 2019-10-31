@@ -24,5 +24,30 @@ namespace MediaWorld.Domain.Singletons
     {
       Console.WriteLine(audio);
     }
+
+    public bool PowerUp()
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool PowerDown()
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool VolumeUp()
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool VolumeDown()
+    {
+      throw new NotImplementedException();
+    }
+
+    public bool VolumeMute()
+    {
+      throw new NotImplementedException();
+    }
   }
 }

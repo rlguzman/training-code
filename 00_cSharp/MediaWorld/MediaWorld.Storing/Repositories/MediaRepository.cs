@@ -35,10 +35,10 @@ namespace MediaWorld.Storing.Repositories
           videoFactory.Create<Photo>()
         });
 
-        _mediaLibrary.Add(audioFactory.Create<Book>());
-        _mediaLibrary.Add(audioFactory.Create<Book>());
-        _mediaLibrary.Add(audioFactory.Create<Book>());
-        _mediaLibrary.Add(audioFactory.Create<Book>());
+        // _mediaLibrary.Add(audioFactory.Create<Book>());
+        // _mediaLibrary.Add(audioFactory.Create<Book>());
+        // _mediaLibrary.Add(audioFactory.Create<Book>());
+        // _mediaLibrary.Add(audioFactory.Create<Book>());
       }
       return _mediaLibrary;
     }

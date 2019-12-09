@@ -14,6 +14,11 @@ namespace MediaWorld.Domain.Abstracts
       return true;
     }
 
+    // public override bool Play()
+    // {
+    //   return true;
+    // }
+
     public new bool Stop()
     {
       return true;

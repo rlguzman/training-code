@@ -2,7 +2,7 @@ namespace MediaWorld.Domain.Abstracts
 {
   public abstract class AVideo : AMedia 
   {
-    public int FrameRate { get; set; }
+    public new int FrameRate { get; set; }
 
     public override bool Forward()
     {
@@ -18,6 +18,11 @@ namespace MediaWorld.Domain.Abstracts
     {
       return true;
     }
+
+    // public override bool Play()
+    // {
+    //   return false;
+    // }
 
     public new bool Stop()
     {

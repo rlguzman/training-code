@@ -1,4 +1,4 @@
-name: $(date:yyyymmdd)$(rev:.rr) #20191209.00
+name: $(date:yyyyMMdd)$(rev:.rr) #20191209.00
 
 trigger:    # trigger the build when there is new code on master
   - master 
@@ -12,3 +12,11 @@ stages:
         steps:
           - script: |
               dotnet build 3_devops/Devops.sln
+  - stage: test
+    jobs:
+    - job: aspnet_test
+      pool:
+        vmImage: ubuntu-18.04
+      setps:
+        - script: dotnet test 3_devops/Devops.sln --collect:"XPlat Code Coverage"
+        

@@ -44,7 +44,7 @@ stages:
             /o:rlguzman
             dotnet build 3_devops/Devops.sln
             dotnet test 3_devops/Devops.sln --logger trx
-            dotnet sonarscanner end 
+            dotnet sonarscanner end /d:sonar.login=$(SONAR_LOGIN)
           env:
             SONAR_LOGIN: $(SONAR_LOGIN)
   - stage: pack
@@ -53,7 +53,7 @@ stages:
       pool:
         vmImage: ubuntu-18.04
       steps:
-        - script: docker image build -f 3_devops/dockerfile -t rlguzman/devops:$BUILD_NAME
+        - script: docker image build -f 3_devops/dockerfile -t rlguzman/devops:$BUILD_NAME .
           env:
             BUILD_NAME: $(Build.DefinitionName)
         - script: docker login -username $DOCKER_USER --password $DOCKER_TOKEN

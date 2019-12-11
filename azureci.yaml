@@ -24,9 +24,9 @@ stages:
             projects: 3_devops/Devops.sln
             arguments: --collect:"XPlat Code Coverage"
         - task: PublishCodeCoverageResults@1
-            inputs:
-              codeCoverageTool: cobertura
-              summaryFileLocation: ./3_devops/Devops.Testing/TestResults/coverage.cobertura.xml
+          inputs:
+            codeCoverageTool: cobertura
+            summaryFileLocation: ./3_devops/Devops.Testing/TestResults/coverage.cobertura.xml
   # - stage: analyze
   #   jobs:
   #     - job:

@@ -56,7 +56,7 @@ stages:
         - script: docker image build -f 3_devops/dockerfile -t rlguzman/devops:$BUILD_NAME 3_devops/.
           env:
             BUILD_NAME: $(Build.DefinitionName)
-        - script: docker login -username $DOCKER_USER --password $DOCKER_TOKEN
+        - script: docker login -username $DOCKER_USER --password-stdin $DOCKER_TOKEN
           env:
             DOCKER_TOKEN: $(docker.token)
             DOCKER_USER: $(docker.user)

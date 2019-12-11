@@ -51,6 +51,7 @@ stages:
           env:
             BUILD_NAME: $(Build.DefinitionName)
         - script: docker login -username $DOCKER_USER --password $DOCKER_TOKEN
+          env:
             DOCKER_TOKEN: $(docker.token)
             DOCKER_USER: $(docker.user)
         - script: docker image push rlguzman/devops:$(BUILD_NAME)

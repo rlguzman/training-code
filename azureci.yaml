@@ -60,6 +60,6 @@ stages:
           env:
             DOCKER_TOKEN: $(docker.token)
             DOCKER_USER: $(docker.user)
-        - script: docker image push rlguzman/devops:$(BUILD_NAME)
+        - script: docker image push rlguzman/devops:$BUILD_NAME
           env:
             BUILD_NAME: $(Build.DefinitionName)

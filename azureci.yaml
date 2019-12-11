@@ -27,24 +27,32 @@ stages:
           inputs:
             codeCoverageTool: cobertura
             summaryFileLocation: '**/coverage.cobertura.xml'
-  # - stage: analyze
-  #   jobs:
-  #     - job:
-  #       pool:
-  #         vmImage: ubuntu-18.04
-  #       steps:
-  #         - script: dotnet install --global dotnet-sonarscanner
-  #         - script: |
-  #           sonarscanner begin /k:devops-rlguzman /d:sonar-login=$(SONAR_LOGIN)
-  #           dotnet build
-  #           dotnet test 
-  #           sonarscanner end /d:sonar-login=$(SONAR_LOGIN)
-  # - stage: pack
-  #   jobs:
-  #     - job:
-  #       pool:
-  #         vmImage: ubuntu-18.04
-  #       steps:
-  #         - script: docker image build -f 3_devops/dockerfile -t rlguzman/devops:$(BUILD_NAME)
-  #         - script: docker login -username $(DOCKER_USER) --password $(DOCKER_TOKEN)
-  #         - script: docker image push rlguzman/devops:$(BUILD_NAME)
+  - stage: analyze
+    jobs:
+      - job:
+        pool:
+          vmImage: ubuntu-18.04
+        steps:
+          - script: dotnet tool install --global dotnet-sonarscanner
+          - script: |
+             dotnet sonarscanner begin /k:devops-rlguzman /d:sonar.login=$(SONAR_LOGIN) /o:rlguzman
+             dotnet build
+             dotnet test 
+             dotnet sonarscanner end /d:sonar-login=$(SONAR_LOGIN)
+            env:
+             SONAR_LOGIN: $(SONAR_LOGIN)
+  - stage: pack
+    jobs:
+      - job:
+        pool:
+          vmImage: ubuntu-18.04
+        steps:
+          - script: docker image build -f 3_devops/dockerfile -t rlguzman/devops:$BUILD_NAME
+            env:
+              BUILD_NAME: $(Build.DefinitionName)
+          - script: docker login -username $DOCKER_USER --password $DOCKER_TOKEN
+              DOCKER_TOKEN: $(docker.token)
+              DOCKER_USER: $(docker.user)
+          - script: docker image push rlguzman/devops:$(BUILD_NAME)
+            env:
+              BUILD_NAME: $(Build.DefinitionName)

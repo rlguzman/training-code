@@ -36,8 +36,8 @@ stages:
           - script: dotnet tool install --global dotnet-sonarscanner
           - script: |
              dotnet sonarscanner begin /k:devops-rlguzman /d:sonar.login=$(SONAR_LOGIN) /o:rlguzman
-             dotnet build
-             dotnet test 
+             dotnet build 3_devops/Devops.sln
+             dotnet test 3_devops/Devops.sln
              dotnet sonarscanner end /d:sonar-login=$(SONAR_LOGIN)
             env:
              SONAR_LOGIN: $(SONAR_LOGIN)

@@ -44,7 +44,7 @@ stages:
             /o:rlguzman
             dotnet build 3_devops/Devops.sln
             dotnet test 3_devops/Devops.sln --logger trx
-            dotnet sonarscanner end /d:sonar-login=$(SONAR_LOGIN)
+            dotnet sonarscanner end 
           env:
             SONAR_LOGIN: $(SONAR_LOGIN)
   - stage: pack
